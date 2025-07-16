@@ -88,7 +88,13 @@ class ContaCorrente(Conta):
         )
     
         excedeu_limite = valor > self.limite
-        excedeu_saque = numero_saques > self.limite_saques
+        excedeu_saques = numero_saques > self.limite_saques
 
         if excedeu_limite:
             print("Limite de saque excedido")
+        elif excedeu_saques:
+            print("Numero de saques excedido")
+        else:
+            return super().sacar(valor)
+
+        return False
