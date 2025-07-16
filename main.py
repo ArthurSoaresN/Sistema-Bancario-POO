@@ -18,3 +18,12 @@ class PessoaFisica(Cliente):
         self.nome = nome
         self.data_nascimento = data_nascimento
         self.cpf = cpf
+
+class Conta:
+    def __init__(self, numero, cliente):
+        self._saldo = 0
+        self._numero = 0
+        self._agencia = "0001"
+        self._cliente = cliente
+        self._historico = Historico()
+        
