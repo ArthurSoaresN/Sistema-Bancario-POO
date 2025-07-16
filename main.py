@@ -74,3 +74,21 @@ def depositar(self, valor):
     else:
         print("Operação Falhou")
         return False   
+    
+class ContaCorrente(Conta):
+    def __init__(self, numero, cliente, limite = 500, limite_saques =3):
+        super().__init__(numero, cliente)
+        self.limite = limite
+        self.limite_saques = limite_saques
+
+    def sacar(self, valor):
+        numero_saques = len(
+            [transacao for transacao in self._historico.transacoes if
+             transacao["tipo"] == Saque.__name__]
+        )
+    
+        excedeu_limite = valor > self.limite
+        excedeu_saque = numero_saques > self.limite_saques
+
+        if excedeu_limite:
+            print("Limite de saque excedido")
